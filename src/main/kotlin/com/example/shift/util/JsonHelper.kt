@@ -5,19 +5,21 @@ import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
-
 val builder: Gson = GsonBuilder()
         .registerTypeAdapter(Boolean::class.java, BooleanDeserializer()) //solve problem with booleans [1,true,0,false]
         .setDateFormat("yyyy-MM-dd HH:mm:ss") //date format from json
         .setPrettyPrinting()
         .create()
 
-fun jsonMapToMapString(json: String): HashMap<String, HashMap<String, User>> {
-    val type = object: TypeToken<HashMap<String, HashMap<String, User>>>() {}.type
-    return builder.fromJson(json, type)
-
+fun jsonMapToUserMap(json: String): HashMap<String, HashMap<String, User>> {
+    return builder.fromJson(json, object: TypeToken<HashMap<String, HashMap<String, User>>>() {}.type)
 }
 
+/**
+ * Deserialize String to Boolean
+ * '1' || 'true' -> true
+ * '0' || 'false' -> false
+ */
 class BooleanDeserializer : JsonDeserializer<Boolean> {
     @Throws(JsonParseException::class)
     @Override

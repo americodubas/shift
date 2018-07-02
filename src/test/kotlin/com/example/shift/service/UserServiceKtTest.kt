@@ -1,14 +1,32 @@
 package com.example.shift.service
 
+import com.example.shift.model.User
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class UserServiceKtTest {
 
+    lateinit var users: MutableCollection<User>
+
+    @Before
+    fun init() {
+        users = getUsers()
+    }
+
     @Test
-    fun getUsersShouldWork() {
-        val users = getUsers()
+    fun shouldNotBeEmpty() {
         assertTrue(users.isNotEmpty())
+    }
+
+    @Test
+    fun shouldHaveTwentySevenUsers() {
+        assertEquals(27, users.size)
+    }
+
+    @Test
+    fun shouldBeAbleToGetUserName() {
+        assertTrue(users.first().firstName.isNotEmpty())
     }
 }
