@@ -8,9 +8,10 @@ data class Location (
         var city: String,
         var country: String,
         var created: Date,
-        var lat: Float,
-        var lng: Float,
+        var lat: Double,
+        var lng: Double,
         var modified: Date,
         var state: String,
-        var timeZone: String
+        var timeZone: String,
+        var labourSettings: LabourSettings
 )

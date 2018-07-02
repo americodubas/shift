@@ -1,7 +1,7 @@
 package com.example.shift.service
 
 import com.example.shift.model.Location
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -22,11 +22,21 @@ class LocationServiceKtTest {
 
     @Test
     fun shouldHaveOneLocation() {
-        Assert.assertEquals(1, locations.size)
+        assertEquals(1, locations.size)
     }
 
     @Test
     fun locationShouldBeSaoPaulo() {
-        Assert.assertEquals("São Paulo", locations.first().city)
+        assertEquals("São Paulo", locations.first().city)
+    }
+
+    @Test
+    fun overtimeShouldBeTrue() {
+        assertTrue(locations.first().labourSettings.overtime)
+    }
+
+    @Test
+    fun thresholdShouldBeFourHundredAndEighty() {
+        assertEquals(480, locations.first().labourSettings.autoBreakRules.first().threshold)
     }
 }
