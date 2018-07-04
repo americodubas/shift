@@ -1,6 +1,7 @@
 package com.example.shift.util
 
 import com.example.shift.model.Location
+import com.example.shift.model.TimePunch
 import com.example.shift.model.User
 import com.google.gson.*
 import com.google.gson.reflect.TypeToken
@@ -16,12 +17,12 @@ fun jsonMapToUserMap(json: String): HashMap<String, HashMap<String, User>> {
     return builder.fromJson(json, object: TypeToken<HashMap<String, HashMap<String, User>>>() {}.type)
 }
 
-fun jsonMapToLocationMapBack(json: String): HashMap<String, HashMap<String, Location>> {
-    return builder.fromJson(json, object: TypeToken<HashMap<String, HashMap<String, Location>>>() {}.type)
-}
-
 fun jsonMapToLocationMap(json: String): HashMap<String, Location> {
     return builder.fromJson(json, object: TypeToken<HashMap<String, Location>>() {}.type)
+}
+
+fun jsonMapToTimePunchMap(json: String): HashMap<String, TimePunch> {
+    return builder.fromJson(json, object: TypeToken<HashMap<String, TimePunch>>() {}.type)
 }
 
 /**
