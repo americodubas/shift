@@ -11,4 +11,6 @@ const val locationUrl = "https://shiftstestapi.firebaseio.com/locations.json"
  * Get locations from the URL, convert json to a map and return the values
  * The json structure is a map(locationId, location)
  */
-fun getLocations() = jsonMapToLocationMap(URL(locationUrl).readText()).values
+fun getLocations() = getLocationsMap().values
+
+fun getLocationsMap() = jsonMapToLocationMap(URL(locationUrl).readText())

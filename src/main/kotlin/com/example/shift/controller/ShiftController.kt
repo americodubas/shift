@@ -10,7 +10,6 @@ class ShiftController {
 
     @GetMapping("/")
     fun welcome(model: Model): String {
-        println("Here Welcome!")
         model.addAttribute("users", getUsers())
         return "welcome"
     }

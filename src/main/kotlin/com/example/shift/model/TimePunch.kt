@@ -11,4 +11,9 @@ data class TimePunch (
         var locationId: Long,
         var modified: Date,
         var userId: Long
-)
+) {
+
+    fun getWorkedMilliseconds(): Long {
+        return clockedOut.time - clockedIn.time
+    }
+}

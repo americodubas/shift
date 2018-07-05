@@ -29,4 +29,10 @@ class UserServiceKtTest {
     fun shouldBeAbleToGetUserName() {
         assertTrue(users.first().firstName.isNotEmpty())
     }
+
+    @Test
+    fun userTimePunch() {
+        getUserTimePunch()
+    }
+
 }
