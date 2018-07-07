@@ -1,6 +1,7 @@
 package com.example.shift.model
 
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 data class TimePunch (
         var clockedIn: Date,
@@ -13,7 +14,5 @@ data class TimePunch (
         var userId: Long
 ) {
 
-    fun getWorkedMilliseconds(): Long {
-        return clockedOut.time - clockedIn.time
-    }
+    fun getWorkedMinutes()= TimeUnit.MILLISECONDS.toMinutes(clockedOut.time - clockedIn.time)
 }

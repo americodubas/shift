@@ -3,19 +3,38 @@
 <head lang="en">
     <title>Shifts</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
 </head>
 <body>
 
-<div th:if="${not #lists.isEmpty(users)}">
+<div th:if="${not #lists.isEmpty(users)}" class="container">
     <h2>List of Students</h2>
-    <table>
+    <table class="table table-striped" data-toggle="table" data-sort-name="name" data-sort-order="desc">
         <tr>
-            <th>Id</th>
-            <th>Name</th>
+            <th>weeklyPhoto</th>
+            <th data-field="id" data-sortable>Id</th>
+            <th data-field="name" data-sortable>Name</th>
+            <th data-field="worked" data-sortable>Worked Hours</th>
+            <th data-field="regular" data-sortable>Regular Hours</th>
+            <th data-field="daily" data-sortable>Daily Overtime</th>
+            <th data-field="worked" data-sortable>Weekly Overtime</th>
         </tr>
         <tr th:each="u : ${users}">
+            <td><img th:src="${u.photo}" /></td>
             <td th:text="${u.id}"></td>
             <td th:text="${u.firstName + ' ' + u.lastName}"></td>
+            <td th:text="${u.totalWorkedHours}"></td>
+            <td th:text="${u.totalRegularHours}"></td>
+            <td th:text="${u.totalDailyOvertime}"></td>
+            <td th:text="${u.totalWeeklyOvertime}"></td>
         </tr>
     </table>
 </div>

@@ -32,7 +32,7 @@ class UserServiceKtTest {
 
     @Test
     fun userTimePunch() {
-        getUserTimePunch()
+        calculateUserTimePunches(getUsers().find { it.id == 517135L }!!, getLocationsMap(), getTimePunches())
     }
 
 }

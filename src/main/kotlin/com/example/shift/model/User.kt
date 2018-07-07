@@ -20,5 +20,5 @@ data class User(
         var totalDailyOvertime: Long = 0,
         var totalWeeklyOvertime: Long = 0,
         var auxWeekMinutes: Long = 0,
-        var auxFirstDayOfTheWeek: LocalDate? = null
+        var auxLastDayOfTheWeek: LocalDate? = null
 )

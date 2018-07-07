@@ -7,9 +7,18 @@ import java.time.temporal.TemporalAdjusters
 import java.util.*
 
 /**
- * Convert date to instant and create a local date from it.
- * Adjust the local date to the previous monday
+ * Adjust the local date to the next sunday
  */
-fun getFirstDayOfTheWeek(d: Date): LocalDate? {
-    return LocalDate.ofInstant(d.toInstant(), ZoneId.systemDefault()).with(TemporalAdjusters.previous(DayOfWeek.MONDAY))
+fun getLastDayOfTheWeek(d: Date): LocalDate? {
+    return d.toLocalDate().with(TemporalAdjusters.next(DayOfWeek.SUNDAY))
 }
+
+/**
+ * Verify if it is sunday.
+ */
+fun isSunday(d: Date) = d.toLocalDate().dayOfWeek == DayOfWeek.SUNDAY
+
+/**
+ * Convert date to instant and create a local date from it.
+ */
+fun Date.toLocalDate(): LocalDate = LocalDate.ofInstant(this.toInstant(), ZoneId.systemDefault())
